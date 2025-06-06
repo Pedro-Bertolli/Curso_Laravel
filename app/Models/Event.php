@@ -9,10 +9,19 @@ class Event extends Model
 {
     use HasFactory;
 
-
     protected $casts = [
-        'items' => 'array', // Cast items to array
+        'items' => 'array'
     ];
 
-    protected $dates = ['date']; // Cast date to Carbon instance];
+    protected $dates = ['date'];
+
+    protected $guarded = [];
+
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function users() {
+        return $this->belongsToMany('App\Models\User');
+    }
 }
